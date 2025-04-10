@@ -153,7 +153,7 @@ namespace GrundyLLC.Controllers
                 email = "customer@example.com", 
                 amount = amount,
                 Currency = "ZAR",
-                callback_url = "https://grundyllc-production-949d.up.railway.app//grocery/paymentcallback"
+                callback_url = "https://grundyllc-production-949d.up.railway.app/grocery/paymentcallback"
             };
 
             var content = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
