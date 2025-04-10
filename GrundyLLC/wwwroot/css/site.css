@@ -1,0 +1,163 @@
+<!-- External Stylesheets and Scripts -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    /* Global Styles */
+    html {
+        font-size: 14px;
+        position: relative;
+        min-height: 100%;
+    }
+
+    @media (min-width: 768px) {
+        html {
+            font-size: 16px;
+        }
+    }
+
+    body {
+        margin-bottom: 60px;
+        background-color: #f8f9fa; /* Light gray background */
+        color: #333;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        margin-bottom: 30px;
+    }
+
+    .navbar-brand img {
+        height: 60px;
+        width: auto;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background: url('/images/grocery-delivery.jpg') no-repeat center center;
+        background-size: cover;
+        color: white;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+    }
+
+    /* Subscription Option */
+    .subscription-option {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .subscription-option:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    .subscription-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #007bff;
+    }
+
+    .subscription-price {
+        font-size: 1.2rem;
+        color: #28a745;
+    }
+
+    .form-check-label {
+        font-size: 1.1rem;
+        margin-left: 10px;
+    }
+
+    .form-check-input {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    /* Button Styles */
+    .btn-primary {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #218838;
+    }
+
+    .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    }
+
+    button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Features Section */
+    .features-section {
+        margin-top: 50px;
+    }
+
+    .feature-box {
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+        transform: translateY(-10px);
+    }
+
+    .feature-box i {
+        font-size: 3rem;
+        color: #007bff;
+    }
+
+    /* Footer */
+    .footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    /* Card Styles */
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-body {
+        background-color: #ffffff;
+    }
+
+    .card-title {
+        color: #007bff;
+    }
+
+    .card-img-top {
+        object-fit: cover;
+        height: 200px;
+    }
+	
+</style>

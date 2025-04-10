@@ -1,0 +1,198 @@
+﻿@model List<GrundyLLC.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+</head>
+<body>
+
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .credit-card {
+            color: white;
+            width: 300px;
+            height: 180px;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .chip {
+            width: 50px;
+            height: 35px;
+            background: gold;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .card-number {
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .card-holder,
+        .card-expiry {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .card-holder span,
+            .card-expiry span {
+                font-size: 12px;
+                opacity: 0.7;
+            }
+    </style>
+
+    <div class="container">
+        <h2>Your Cart</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@string.Format("R {0:N2}", item.Price)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="total">
+            <h4><strong>Total:</strong> @string.Format("R {0:N2}", Model.Sum(i => i.Price))</h4>
+        </div>
+
+        <!-- Add More to Cart Button (before the Subscription section) -->
+        <div class="text-center">
+            <a href="/Grocery" class="btn btn-primary">Continue Shooping</a>
+        </div>
+
+        <!-- Display Subscription Information -->
+        @if (TempData["Subscription"] != null)
+        {
+            var subscription = TempData["Subscription"] as GrundyLLC.Models.Subscription;
+            if (subscription != null)
+            {
+                <div class="alert alert-success">
+                    <h4>Current Subscription:</h4>
+                    <p><strong>@subscription.SubscriptionType</strong> - @string.Format("R {0:N2}", subscription.Price)</p>
+                </div>
+            }
+        }
+
+        <div class="container py-5">
+
+            @if (TempData["SubscriptionDetails"] != null)
+            {
+                <h3 class="mt-5 mb-3 text-center"> Your Subscription</h3>
+                var subscriptionDetails = TempData["SubscriptionDetails"];
+
+                <div class="card-container">
+                    <div class="credit-card" style="background:linear-gradient(135deg, #667eea, #764ba2)">
+                        <div class="chip"></div>
+                        <div class="card-number"></div>
+                        <div class="card-info">
+                            <div class="card-holder">
+                                @subscriptionDetails
+                            </div>
+                            <div class="card-expiry">
+                                <span>Expires</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <!-- Subscription Section -->
+                <h3 class="mt-5 mb-3 text-center">Choose Your Subscription</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="subscription-option">
+                            <h4 class="subscription-title">Weekly Subscription</h4>
+                            <p class="subscription-price">R 50.00</p>
+                            <p>Get fresh groceries delivered to your doorstep every week.</p>
+                            <input type="checkbox" class="form-check-input" id="weekly" name="subscriptionType" value="Weekly">
+                            <label class="form-check-label" for="weekly">Select this option</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="subscription-option">
+                            <h4 class="subscription-title">Monthly Subscription</h4>
+                            <p class="subscription-price">R 200.00</p>
+                            <p>Enjoy the convenience of receiving groceries every month.</p>
+                            <input type="checkbox" class="form-check-input" id="monthly" name="subscriptionType" value="Monthly">
+                            <label class="form-check-label" for="monthly">Select this option</label>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="pricing-details">
+                <!-- Display Subscription Fee -->
+                @if (TempData["Subscription"] != null)
+                {
+                    var subscription = TempData["Subscription"] as GrundyLLC.Models.Subscription;
+                    <p><strong>Subscription Fee:</strong> @string.Format("R {0:N2}", subscription.Price)</p>
+                }
+                <!-- Platform Fee (11.5% of total) -->
+                <p>
+                    <strong>Service (Platform) Fee (11.5%):</strong>
+                    @if (TempData["Subscription"] != null)
+                    {
+                        var subscription = TempData["Subscription"] as GrundyLLC.Models.Subscription;
+                        @string.Format("R {0:N2}", (Model.Sum(i => i.Price) + subscription.Price) * 0.125M)
+                    }
+                    else
+                    {
+                        @string.Format("R {0:N2}", Model.Sum(i => i.Price) * 0.125M)
+                    }
+                </p>
+
+                <!-- Grand Total -->
+                <h4>
+                    <strong>Grand Total:</strong>
+                    @if (TempData["Subscription"] != null)
+                    {
+                        var subscription = TempData["Subscription"] as GrundyLLC.Models.Subscription;
+                        @string.Format("R {0:N2}", Model.Sum(i => i.Price) + subscription.Price + (Model.Sum(i => i.Price) + subscription.Price) * 0.125M)
+                    }
+                    else
+                    {
+                        @string.Format("R {0:N2}", Model.Sum(i => i.Price) + (Model.Sum(i => i.Price) * 0.125M))
+                    }
+                </h4>
+            </div>
+
+            <!-- Proceed to Checkout Button -->
+            <form action="/Grocery/Checkout" method="post">
+                <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+            </form>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

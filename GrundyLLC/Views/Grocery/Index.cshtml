@@ -1,0 +1,42 @@
+﻿@model List<GrundyLLC.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Store</title>
+
+    <!-- Tailwind CSS CDN for utility-first classes -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Product cards in a responsive grid layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            @foreach (var product in Model)
+            {
+                <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="@product.ImageUrl" alt="@product.Name" class="w-full h-48 object-cover rounded-t-lg">
+
+                    <div class="p-4">
+                        <h5 class="text-lg font-medium text-gray-800">@product.Name</h5>
+                        <p class="text-pink-600 font-semibold mt-2">@string.Format("R {0:N2}", product.Price)</p>
+
+                        <form action="/Grocery/AddToCart" method="post" class="mt-4">
+                            <input type="hidden" name="productId" value="@product.Id" />
+                            <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-500 transition-all duration-200">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+
+</html>

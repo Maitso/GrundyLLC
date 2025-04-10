@@ -1,0 +1,27 @@
+﻿@model List<GrundyLLC.Models.Product>
+
+<h2>Your Cart</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@string.Format("{0:C}", item.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Total: @string.Format("{0:C}", Model.Sum(i => i.Price))</p>
+
+<form action="/Grocery/Checkout" method="post">
+    <button type="submit">Proceed to Checkout</button>
+</form>

@@ -1,0 +1,10 @@
+﻿<h2>Payment Status</h2>
+
+@if (ViewData["PaymentSuccess"] != null && (bool)ViewData["PaymentSuccess"])
+{
+    <p>Your payment was successful!</p>
+}
+else
+{
+    <p>There was an issue with your payment. Please try again.</p>
+}

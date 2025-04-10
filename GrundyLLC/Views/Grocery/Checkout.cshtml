@@ -1,0 +1,49 @@
+﻿@model List<GrundyLLC.Models.Product>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4">Checkout</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@string.Format("R {0:N2}", item.Price)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <p>Total: @string.Format("R {0:N2}", Model.Sum(i => i.Price))</p>
+
+        <!-- Display Subscription Information -->
+        @if (TempData["Subscription"] != null)
+        {
+            var subscription = TempData["Subscription"] as GrundyLLC.Models.Subscription;
+            if (subscription != null)
+            {
+                <h4>Subscription: @subscription.SubscriptionType - @string.Format("R {0:N2}", subscription.Price)</h4>
+            }
+        }
+
+        <form action="/Grocery/Checkout" method="post">
+            <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+        </form>
+    </div>
+</body>
+</html>

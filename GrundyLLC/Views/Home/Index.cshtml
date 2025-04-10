@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Welcome to Grundy LLC Grocery Delivery";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* General body styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: #fff;
+            padding: 60px 0; /* Reduced padding */
+            text-align: center;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem; /* Smaller heading */
+            font-weight: bold;
+            color: #333;
+        }
+
+        .hero-section p {
+            font-size: 1.125rem; /* Slightly smaller font size */
+            color: #777;
+        }
+
+        .hero-section .btn {
+            background-color: #ec4899; /* Pink Accent */
+            color: white;
+            padding: 10px 30px; /* Reduced padding */
+            font-size: 1rem; /* Slightly smaller font size */
+            border-radius: 25px; /* Less rounded */
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-section .btn:hover {
+            background-color: #db2777; /* Darker pink on hover */
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 40px 0; /* Reduced padding */
+        }
+
+        .features-section h2 {
+            font-size: 2rem; /* Slightly smaller heading */
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px; /* Reduced bottom margin */
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 20px; /* Reduced padding */
+            border: 1px solid #f1f1f1;
+            border-radius: 8px; /* Less rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box i {
+            font-size: 2.5rem; /* Smaller icon */
+            color: #ec4899; /* Pink Accent */
+            margin-bottom: 15px; /* Reduced margin */
+        }
+
+        .feature-box h4 {
+            font-size: 1.125rem; /* Smaller title */
+            font-weight: 600;
+            color: #333;
+        }
+
+        .feature-box p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Grundy Grocery Delivery</h1>
+            <p>Your go-to meal subscription store with fast and reliable delivery.</p>
+            <a href="@Url.Action("Index", "Grocery")" class="btn btn-dark btn-lg">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section container">
+        <h2 class="text-center">Why Choose Our Grocery Subscription Plan?</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-box"></i>
+                    <h4>Convenient Delivery</h4>
+                    <p>Your groceries delivered to your doorstep with no hassle.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-percent"></i>
+                    <h4>Exclusive Discounts</h4>
+                    <p>Enjoy discounts and special offers exclusive to our subscription members.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <i class="fas fa-apple-alt"></i>
+                    <h4>Fresh & Organic</h4>
+                    <p>We only offer the freshest organic produce for a healthier lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Imports -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
